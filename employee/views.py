@@ -1,3 +1,5 @@
+import os
+from django.http import FileResponse, HttpResponse
 from django.shortcuts import render,redirect
 import json 
 from openpyxl import load_workbook
@@ -126,3 +128,15 @@ def ajout_obv(request, matricule):
         workbook.save(path)
         workbook.close()
         return redirect("home")
+    
+def download_excel(request, matricule):
+    path = f"./excel/{matricule}2024.xlsx"
+    if os.path.exists(path):
+        response = FileResponse(open(path, 'rb'))
+        response['Content-Disposition'] = 'attachment; filename="{}2024.xlsx"'.format(matricule)
+        return response
+    else:
+        # Handle the case where the file is not found
+        return HttpResponse("The file you are trying to download does not exist.", status=404)
+
+

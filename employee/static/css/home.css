@@ -57,6 +57,21 @@ th.day-column {
 .resN{
   cursor: pointer;
 }
+td.last_column{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.button-container {
+  display: flex;
+  justify-content: space-between; /* Distribute space between the two buttons */
+  align-items: center; /* Align buttons vertically */
+}
+
+.button-container a {
+  margin: 0 5px; /* Add small margin between the buttons */
+}
+
 #saveBtn {
   position: absolute;
   top: 100px;
