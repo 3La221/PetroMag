@@ -1,0 +1,143 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f9fa; /* Light gray background color */
+}
+
+.container {
+
+  margin-top: 50px;
+  height: 100vh;
+  
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.current-date {
+  font-size: 16px;
+  color: #6c757d; /* Gray color for date */
+}
+
+.table {
+  border-radius: 10px; /* Rounded corners for table */
+  overflow: hidden; /* Hide overflowing border radius */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for table */
+  margin: auto;
+ 
+}
+
+.table th, .table td {
+  text-align: center;
+  
+  
+  
+}
+.table th .day {
+}
+
+.wres{
+  width: 60px;
+}
+
+.res{ 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding : 8px 0;
+
+}
+
+th.day-column {
+  width: 150px; /* Adjust the width as per your preference */
+}
+
+.resN{
+  cursor: pointer;
+}
+#saveBtn {
+  position: absolute;
+  top: 100px;
+  right: 220px;
+}
+.today {
+  background-color: #0056b3 !important;
+}
+
+.table th {
+  background-color: #343a40; /* Dark background color for table headers */
+  color: #fff; /* White text color for table headers */
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /* Alternate row background color */
+}
+
+.table tbody tr:hover {
+  background-color: #e2e6ea; /* Hover background color */
+}
+
+.btn-primary {
+  background-color: #007bff; /* Blue primary button color */
+  border-color: #007bff; /* Border color for primary button */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+  border-color: #0056b3; /* Darker border color on hover */
+}
+
+.result.R {
+  color: rgba(55, 41, 255, 1); /* Blue for R with reduced opacity */
+}
+
+
+.result.T {
+  color: rgba(40, 167, 69, 1); /* Green for T with reduced opacity */
+}
+
+.result.one {
+  color: rgba(255, 193, 7, 1); /* Yellow for 1 with reduced opacity */
+}
+
+.result.I {
+  color: rgba(102, 16, 242, 1); /* Purple for I with reduced opacity */
+}
+
+.result.two {
+  color: rgba(220, 53, 69, 1); /* Red for 2 with reduced opacity */
+}
+
+.result.M {
+  color: rgba(32, 201, 151, 1); /* Teal for M with reduced opacity */
+}
+
+.result.A {
+  color: rgba(253, 126, 20, 1); /* Orange for A with reduced opacity */
+}
+
+.result.six {
+  color: rgba(0, 123, 255, 1); /* Dark Blue for 6 with reduced opacity */
+}
+
+.result.seven {
+  color: rgba(111, 66, 193, 1); /* Indigo for 7 with reduced opacity */
+}
+
+.result.eight {
+  color: rgba(23, 162, 184, 1); /* Cyan for 8 with reduced opacity */
+}
+
+.result.nine {
+  color: rgba(232, 62, 140, 1); /* Pink for 9 with reduced opacity */
+}
+
+.result.C {
+  color: rgba(40, 167, 69, 1); /* Green for C with reduced opacity */
+}
+
+.result.Cr {
+  color: rgba(32, 201, 151, 1); /* Teal for Cr with reduced opacity */
+}
