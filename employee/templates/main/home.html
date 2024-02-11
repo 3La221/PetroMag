@@ -11,9 +11,17 @@
 </head>
 <body>
 <div class="container">
+
     <div class="header">
         <h2>PetroMag</h2>
         <h6 id="currentDate" class="current-date"></h6>
+        <h3> {{ chef.station }} </h3>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search by Matricule or Name...">
+            <button type="button" id="saveBtn" class="btn btn-primary">Save</button>
+
+        </div>
+        
     </div>
 <div class="t"> 
     
@@ -41,12 +49,12 @@
                     <td>{{emp_data.employee.matricule}}</td>
                     <td class="resN">
                         {{emp_data.employee}}
-                    
                     </td>
                     {% for result in emp_data.results %}
                     {% if result %}
                     <td class="result {{ result }}"> <div class="res wres">  {{ result }} </div></td>
                     {% else %}
+                    
                     <td class="result">
                         <div class="wres"> 
                             <select class="form-control" name="select">
@@ -87,11 +95,10 @@
                     
                 </tr>
                 {% endfor %}
-               
             </tbody>
         </form>
     </table>
-    <button type="button" id="saveBtn" class="btn btn-primary">Save</button>
+    <a href="{% url 'logout' %}" type="button" id="logoutBtn" class="btn btn-danger">Logout</a>
     <!-- Modal -->
     <div class="modal fade" id="observationModal" tabindex="-1" role="dialog" aria-labelledby="observationModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -279,6 +286,15 @@
             // Hide the modal
             $('#observationModal').modal('hide');
         });
+        // JavaScript for live search
+$(document).ready(function() {
+    $('#searchInput').on('keyup', function() {
+        var value = $(this).val().toLowerCase();
+        $('tbody tr').filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});
 
 
     });

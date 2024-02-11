@@ -4,17 +4,26 @@ from django.shortcuts import render,redirect
 import json 
 from openpyxl import load_workbook
 import shutil
-from .models import Employee
+from .models import Employee,ChefStation
 from datetime import datetime
+from django.contrib.auth import authenticate, login,logout
+from django.contrib import messages
+from django.template import loader
 
 
 def home(request):
+    
+    if not request.user.is_authenticated:
+        return redirect('login')
     current_month = datetime.now().month
     today = datetime.now().day 
     default_excel = "./excel/default.xlsx"
-    employees = Employee.objects.all()
     data = []
     cells = []
+    chef_station = ChefStation.objects.get(user=request.user)
+    employees = Employee.objects.filter(station = chef_station.station)
+
+    
     if (not employees):
         return render(request,'main/home.html', {'data':data,'days':[1,2,3,4,5,6,7,8,9,10]})
     for employee in employees:
@@ -98,10 +107,10 @@ def home(request):
             worbook.save(f"./excel/{matricule}2024.xlsx")    
         worbook.close()
         
-        return render(request,'main/home.html',{'data':data,'days':days , 'today':today})
+        return render(request,'main/home.html',{'data':data,'days':days , 'today':today, 'chef':chef_station})
     
     
-    return render(request,'main/home.html',{'data':data,'days':days , 'today':today})
+    return render(request,'main/home.html',{'data':data,'days':days , 'today':today , 'chef':chef_station})
 
 
 def ajout_obv(request, matricule):
@@ -138,5 +147,33 @@ def download_excel(request, matricule):
     else:
         # Handle the case where the file is not found
         return HttpResponse("The file you are trying to download does not exist.", status=404)
+
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            # Check if the authenticated user is a chef station
+            chef_station = ChefStation.objects.filter(user=user).first()
+            if chef_station is not None:
+                login(request, user)
+                # Redirect to the dashboard or desired page
+                return redirect('home')  # Replace 'dashboard' with your URL name
+            else:
+                messages.error(request, 'You are not authorized to access this page.')
+        else:
+            messages.error(request, 'Invalid username or password.')
+    return render(request, 'main/login.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+
+
+
 
 

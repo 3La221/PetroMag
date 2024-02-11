@@ -73,9 +73,13 @@ td.last_column{
 }
 
 #saveBtn {
+  width: 100px;
+
+}
+#logoutBtn{
   position: absolute;
-  top: 100px;
-  right: 220px;
+  right: 160px;
+  top: 10px
 }
 .today {
   background-color: #0056b3 !important;
@@ -155,4 +159,25 @@ td.last_column{
 
 .result.Cr {
   color: rgba(32, 201, 151, 1); /* Teal for Cr with reduced opacity */
+}
+
+
+.search-container {
+  display: flex;
+  justify-content:space-between ;
+}
+
+#searchInput {
+  
+  width: 30%; /* Make the search input field fill the entire width */
+  padding: 10px; /* Add padding for better appearance */
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 5px; /* Add some border radius for rounded corners */
+  box-sizing: border-box; /* Ensure padding and border are included in the width */
+  transition: border-color 0.3s; /* Add transition for border color change */
+}
+
+#searchInput:focus {
+  outline: none; /* Remove default focus outline */
+  border-color: #007bff; /* Change border color on focus */
 }
